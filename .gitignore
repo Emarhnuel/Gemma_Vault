@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# IDE and Project
+.vscode/
+.agents/
+skills-lock.json
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend
+backend/agent_data/
