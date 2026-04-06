@@ -18,5 +18,6 @@ skills-lock.json
 frontend/node_modules/
 frontend/dist/
 
-# Backend
-backend/agent_data/
+# Environment
+.env
+backend/.env
