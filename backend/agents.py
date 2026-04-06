@@ -94,7 +94,8 @@ payments_agent = {
     "description": "Handles conversational money transfers and bill splitting.",
     "system_prompt": PAYMENTS_SYSTEM_PROMPT,
     "tools": [execute_transfer_tool],
-    "model": model_primary
+    "model": model_primary,
+    "interrupt_on": {"execute_transfer_tool": True}  # HITL: verify recipient exists before transferring
 }
 
 # 2. Analytics Agent
