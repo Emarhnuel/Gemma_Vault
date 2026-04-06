@@ -52,15 +52,20 @@ from prompts import (
 # MODEL CONFIGURATION
 # =============================================================================
 
-# Ollama - Main model for all agents
-# Assuming a local LLM like llama3 or mistral is running
-OLLAMA_MODEL_ID = os.getenv("OLLAMA_MODEL", "llama3")
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+# Ollama Cloud Configuration
+OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
+OLLAMA_CLOUD_URL = "https://ollama.com"
+OLLAMA_CLOUD_MODEL = "gemma4:31b-cloud"
 
 model_primary = ChatOllama(
-    model=OLLAMA_MODEL_ID,
-    base_url=OLLAMA_BASE_URL,
+    model=OLLAMA_CLOUD_MODEL,
+    base_url=OLLAMA_CLOUD_URL,
+    client_kwargs={
+        "headers": {"Authorization": f"Bearer {OLLAMA_API_KEY}"}
+    },
+    reasoning=True,
     temperature=0.0,
+    validate_model_on_init=False,
 )
 
 # =============================================================================
