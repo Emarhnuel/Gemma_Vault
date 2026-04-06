@@ -32,7 +32,6 @@ from tools import (
     execute_transfer_tool,
     query_transactions_tool,
     configure_budget_tool,
-    verify_fraud_tool,
     update_account_tool,
     tavily_search_tool,
     draft_invoice_tool,
@@ -44,7 +43,6 @@ from prompts import (
     PAYMENTS_SYSTEM_PROMPT,
     ANALYTICS_SYSTEM_PROMPT,
     BUDGETING_SYSTEM_PROMPT,
-    SECURITY_SYSTEM_PROMPT,
     ACCOUNT_SYSTEM_PROMPT,
     INVESTMENT_SYSTEM_PROMPT,
     INVOICE_SYSTEM_PROMPT,
@@ -117,16 +115,6 @@ budgeting_agent = {
     "model": model_primary
 }
 
-# 4. Security Agent
-security_agent = {
-    "name": "security_agent",
-    "description": "Proactively detects anomalies, messages the user for verification, and executes card freezes/replacements.",
-    "system_prompt": SECURITY_SYSTEM_PROMPT,
-    "tools": [verify_fraud_tool],
-    "model": model_primary,
-    "interrupt_on": {"verify_fraud_tool": True} # HITL Approval required to freeze cards/cancel transactions
-}
-
 # 5. Account Agent
 account_agent = {
     "name": "account_agent",
@@ -166,7 +154,6 @@ supervisor = create_deep_agent(
         payments_agent, 
         analytics_agent, 
         budgeting_agent, 
-        security_agent, 
         account_agent,
         investment_advisory_agent,
         invoice_agent
