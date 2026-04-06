@@ -1,0 +1,6 @@
+# Core Project Dependencies
+supabase
+python-dotenv
+langchain-ollama
+langgraph
+tavily-python
