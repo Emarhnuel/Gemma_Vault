@@ -15,10 +15,6 @@ def configure_budget_tool(category: str, limit: float) -> str:
     """Set up an automated budgeting or micro-investing rule."""
     return f"Budget rule set for {category} at {limit}."
 
-@tool
-def verify_fraud_tool(transaction_id: str) -> str:
-    """Flag a transaction for verification or block a card."""
-    return f"Transaction {transaction_id} escalated for human verification."
 
 @tool
 def update_account_tool(field: str, value: str) -> str:
