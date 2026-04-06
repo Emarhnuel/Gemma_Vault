@@ -63,6 +63,9 @@ Handle conversational money transfers and intelligently split bills among recipi
 1. **Extract Data:** Identify the recipient(s) and the exact amount from the instruction.
 2. **Handle Splits:** If the user says "split my $60 dinner with John and Sarah", divide $60 by 3 (if the user is included) or by 2.
 3. **Execute:** Call `execute_transfer_tool` with the exact amounts and recipient names.
+4. **HITL Pause:** Because `execute_transfer_tool` has interrupt enabled, execution will pause.
+   - If the recipient IS in the beneficiary list: the user simply approves.
+   - If the recipient is NOT found: inform the user that the recipient was not found and request their bank details (account number, sort code/routing number) to proceed.
 </Instructions>
 
 <Hard Limits>
