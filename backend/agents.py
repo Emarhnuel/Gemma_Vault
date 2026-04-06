@@ -26,6 +26,7 @@ if os.getenv("LANGSMITH_TRACING", "").lower() == "true":
         os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGSMITH_PROJECT")
     print(f"[INFO] LangSmith tracing enabled for project: {os.getenv('LANGSMITH_PROJECT', 'default')}")
 
+
 # Import tools and prompts
 from tools import (
     execute_transfer_tool,
