@@ -113,7 +113,8 @@ budgeting_agent = {
     "description": "Configures automated background rules and micro-investing targets.",
     "system_prompt": BUDGETING_SYSTEM_PROMPT,
     "tools": [configure_budget_tool],
-    "model": model_primary
+    "model": model_primary,
+    "interrupt_on": {"configure_budget_tool": True}  # HITL: clarify source account + confirm rule before activating
 }
 
 # 5. Account Agent
@@ -122,7 +123,8 @@ account_agent = {
     "description": "Interfaces with backend administrative tools for address changes and limit updates.",
     "system_prompt": ACCOUNT_SYSTEM_PROMPT,
     "tools": [update_account_tool],
-    "model": model_primary
+    "model": model_primary,
+    "interrupt_on": {"update_account_tool": True}  # HITL: confirm before modifying account details
 }
 
 # 6. Investment Advisory Agent
