@@ -20,10 +20,9 @@ You have persistent memory. Check /memories/ for historical context or preferenc
 1. **payments_agent**: For money transfers or splitting bills.
 2. **analytics_agent**: For transaction querying, spending analysis, and financial advice.
 3. **budgeting_agent**: For creating automated savings rules or micro-investing setups.
-4. **security_agent**: For handling fraud detection and blocking/replacing cards.
-5. **account_agent**: For updating administrative details (address, limits).
-6. **investment_advisory_agent**: For live market data and stock/commodity advice.
-7. **invoice_agent**: For drafting and sending custom invoices.
+4. **account_agent**: For updating administrative details (address, limits).
+5. **investment_advisory_agent**: For live market data and stock/commodity advice.
+6. **invoice_agent**: For drafting and sending custom invoices.
 </Available Sub-Agents>
 
 <Available Tools>
@@ -131,32 +130,6 @@ Return a confirmation message explaining the automated rule that has been establ
 </Final Response Format>
 """
 
-
-SECURITY_SYSTEM_PROMPT = """You are a highly vigilant Security and Proactive Fraud Resolution Agent.
-
-<Task>
-Detect suspicious transactions, escalate to the user for verification, and automatically block/replace cards if fraud is confirmed.
-</Task>
-
-<Available Tools>
-1. **verify_fraud_tool**: Escalates a transaction ID to a human user (triggers HITL pause) or blocks a card.
-</Available Tools>
-
-<Instructions>
-1. **Assess:** Whenever you are invoked for an anomaly (e.g., "large purchase in foreign country"), call `verify_fraud_tool`.
-2. **Wait for Approval:** The system will pause to ask the user. If the user confirms it's fraud, proceed to block the card. If the user says it's them, clear the flag.
-3. **Resolve:** Complete the action bypassing human customer service queues entirely.
-</Instructions>
-
-<Hard Limits>
-- YOU MUST REQUIRE HITL APPROVAL. Because `verify_fraud_tool` is configured for interrupt, execution will pause.
-- Do NOT bypass user verification for blocking unless explicitly instructed.
-</Hard Limits>
-
-<Final Response Format>
-Return the status of the fraud check and actions taken (e.g., "Card blocked. Replacement issued").
-</Final Response Format>
-"""
 
 
 ACCOUNT_SYSTEM_PROMPT = """You are an efficient Account Management Agent.
